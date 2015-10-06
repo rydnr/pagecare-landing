@@ -1,0 +1,14 @@
+{
+	"category" : "ConfigurationOfPageCoreLanding",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		"LastVersionLoad" ],
+	"commentStamp" : "",
+	"instvars" : [
+		"project" ],
+	"name" : "ConfigurationOfPageCoreLanding",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
