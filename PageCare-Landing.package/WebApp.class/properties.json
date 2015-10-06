@@ -1,0 +1,14 @@
+{
+	"category" : "PageCare-Landing",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "WebApp",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
