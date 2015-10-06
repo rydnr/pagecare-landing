@@ -3,7 +3,7 @@ baseline01: spec
         <version: '0.1-baseline'>
         spec for: #'common' do: [
                 spec blessing: #'baseline'.
-                spec repository: 'gitfiletree://' , FileSystem workingDirectory.
+                spec repository: 'gitfiletree://' , FileSystem workingDirectory fullName.
                 spec
                         project: 'NeoJSON' with: [
                                 spec
