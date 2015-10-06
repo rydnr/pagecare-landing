@@ -4,7 +4,7 @@ baseline01: spec
         
    spec for: #common do: [
 		spec blessing: #baseline.
-		spec repository: 'http://www.smalltalkhub.com/mc/JoseSanLeandro/PageCareLanding/main'. 
+		"spec repository: 'http://www.smalltalkhub.com/mc/JoseSanLeandro/PageCareLanding/main'."
 
 		spec package: 'PageCare-Landing'.
 			
