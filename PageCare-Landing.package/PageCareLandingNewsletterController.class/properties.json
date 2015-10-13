@@ -7,8 +7,8 @@
 	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "WebApp",
+	"name" : "PageCareLandingNewsletterController",
 	"pools" : [
 		 ],
-	"super" : "Object",
+	"super" : "ZnDefaultServerDelegate",
 	"type" : "normal" }

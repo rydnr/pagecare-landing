@@ -1,0 +1,16 @@
+{
+	"category" : "PageCare-Landing",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"port",
+		"mapping",
+		"znServer" ],
+	"name" : "PageCareLandingApplication",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
