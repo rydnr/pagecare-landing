@@ -5,6 +5,11 @@ baseline01: spec
                 spec blessing: #'baseline'.
                 spec repository: 'gitfiletree://' , FileSystem workingDirectory fullName.
                 spec
+                        project: 'Zinc' with: [
+                                spec
+                                        className: #ConfigurationOfZincHTTPComponents;
+                                        versionString: #'stable';
+                                        repository: 'http://smalltalkhub.com/mc/Pharo/Pharo40/main' ];
                         project: 'NeoJSON' with: [
                                 spec
                                         className: #ConfigurationOfNeoJSON;
