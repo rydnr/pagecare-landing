@@ -9,7 +9,8 @@ baseline01: spec
                                 spec
                                         className: #ConfigurationOfZincHTTPComponents;
                                         versionString: #'stable';
-                                        repository: 'http://smalltalkhub.com/mc/Pharo/Pharo40/main' ];
+                                        repository: 'http://smalltalkhub.com/mc/Pharo/Pharo40/main';
+													group: 'REST' ];
                         project: 'NeoJSON' with: [
                                 spec
                                         className: #ConfigurationOfNeoJSON;
