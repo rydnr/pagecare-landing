@@ -1,17 +1,17 @@
 {
 	"class" : {
-		"DevelopmentSupport" : "chous 10/13/2015 09:06:58",
-		"baseConfigurationClassIfAbsent:" : "chous 10/13/2015 09:06:58",
-		"ensureMetacello" : "chous 10/13/2015 09:06:58",
-		"ensureMetacelloBaseConfiguration" : "chous 10/13/2015 09:06:58",
-		"isMetacelloConfig" : "chous 10/13/2015 09:06:58",
-		"load" : "chous 10/13/2015 09:06:58",
-		"loadBleedingEdge" : "chous 10/13/2015 09:06:58",
-		"loadDevelopment" : "chous 10/13/2015 09:06:58",
-		"project" : "chous 10/13/2015 09:06:58",
-		"validate" : "chous 10/13/2015 09:06:58" },
+		"DevelopmentSupport" : "chous 10/18/2015 19:01:14",
+		"baseConfigurationClassIfAbsent:" : "chous 10/18/2015 19:01:14",
+		"ensureMetacello" : "chous 10/18/2015 19:01:14",
+		"ensureMetacelloBaseConfiguration" : "chous 10/18/2015 19:01:14",
+		"isMetacelloConfig" : "chous 10/18/2015 19:01:14",
+		"load" : "chous 10/18/2015 19:01:14",
+		"loadBleedingEdge" : "chous 10/18/2015 19:01:14",
+		"loadDevelopment" : "chous 10/18/2015 19:01:14",
+		"project" : "chous 10/18/2015 19:01:14",
+		"validate" : "chous 10/18/2015 19:01:14" },
 	"instance" : {
-		"baseline01:" : "JoseSanLeandro 10/18/2015 19:01",
-		"customProjectAttributes" : "chous 10/13/2015 09:06:58",
-		"development:" : "chous 10/13/2015 09:06:58",
-		"project" : "chous 10/13/2015 09:06:58" } }
+		"baseline01:" : "JoseSanLeandro 10/21/2015 20:01",
+		"customProjectAttributes" : "chous 10/18/2015 19:01:14",
+		"development:" : "chous 10/18/2015 19:01:14",
+		"project" : "chous 10/18/2015 19:01:14" } }

@@ -5,12 +5,18 @@ baseline01: spec
                 spec blessing: #'baseline'.
                 spec repository: 'gitfiletree://' , FileSystem workingDirectory fullName.
                 spec
+                        project: 'Teapot' with: [
+                                spec
+                                        className: #ConfigurationOfTeapot;
+                                        versionString: #'stable';
+                                        repository: 'http://smalltalkhub.com/mc/zeroflag/Teapot/main/';
+													loads: #('default') ]; "Core"
                         project: 'Zinc' with: [
                                 spec
                                         className: #ConfigurationOfZincHTTPComponents;
                                         versionString: #'stable';
                                         repository: 'http://smalltalkhub.com/mc/Pharo/Pharo40/main';
-													loads: #('REST') ];
+													loads: #('REST' 'Tests') ];
                         project: 'NeoJSON' with: [
                                 spec
                                         className: #ConfigurationOfNeoJSON;
