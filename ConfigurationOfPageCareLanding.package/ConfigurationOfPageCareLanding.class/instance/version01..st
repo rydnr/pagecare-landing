@@ -1,11 +1,18 @@
-baselines
-baseline01: spec
-        <version: '0.1-baseline'>
+as yet unclassified
+version01: spec
+        <version: '0.1'>
         spec for: #'common' do: [
                 spec blessing: #'baseline'.
                 spec repository: 'gitfiletree://' , FileSystem workingDirectory fullName.
                 spec
-                        project: 'Teapot' with: [
+							project: 'TMM' with: [ 
+									spec
+											className: #ConfigurationOfTMM;
+											versionString: #'stable';
+											repository: 'github://yannij/TMM:master/repository';
+											loads: #('stable')
+									 ];
+							project: 'Teapot' with: [
                                 spec
                                         className: #ConfigurationOfTeapot;
                                         versionString: #'stable';
@@ -34,7 +41,7 @@ baseline01: spec
                                         repository: 'http://smalltalkhub.com/mc/estebanlm/Voyage/main/' ].
                 spec baseline: 'DeployUtils' with: [ spec repository: 'github://fstephany/DeployUtils/repository' ].
                 spec
-                        package: #'PageCare-Landing' requires: #('Teapot').
+                        package: #'PageCare-Landing' requires: #('Teapot' 'Zinc' 'VoyageMongo').
                 spec
                         group: 'core' with: #(#'PageCare-Landing' );
                         group: 'default' with: #('core' ). ].
