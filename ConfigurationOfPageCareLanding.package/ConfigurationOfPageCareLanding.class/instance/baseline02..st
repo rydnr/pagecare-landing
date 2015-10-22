@@ -1,4 +1,4 @@
-as yet unclassified
+baselines
 baseline02: spec
         <version: '0.2-baseline'>
         spec for: #'common' do: [
@@ -14,7 +14,7 @@ baseline02: spec
 									 ].
                 spec baseline: 'DeployUtils' with: [ spec repository: 'github://fstephany/DeployUtils/repository' ].
                 spec
-                        package: #'PageCare-Landing' requires: #('TMM').
+                        package: #'PageCare-Landing' with: #('TMM').
                 spec
                         group: 'core' with: #(#'PageCare-Landing' );
                         group: 'default' with: #('core' ). ].

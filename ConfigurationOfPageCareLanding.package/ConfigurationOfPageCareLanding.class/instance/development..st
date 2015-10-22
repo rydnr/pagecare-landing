@@ -1,4 +1,4 @@
-symbolic versions
+baselines
 development: spec
         <symbolicVersion: #'development'>
 
