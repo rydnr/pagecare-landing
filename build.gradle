@@ -1,0 +1,163 @@
+version = "0.0-SNAPSHOT"
+
+buildscript {
+    repositories {
+        maven {
+            url "https://repo1.maven.org/maven2"
+        }
+        jcenter {
+            url "https://jcenter.bintray.com/"
+        }
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.1'
+    }
+}
+
+subprojects {
+    repositories {
+        maven {
+            url "https://repo1.maven.org/maven2"
+        }
+        jcenter {
+            url "https://jcenter.bintray.com/"
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+apply plugin: PharoPlugin
+
+pharo {
+    imageVersion = '50'
+}
+
+def imageName = "${project.name}-${project.version}"
+
+task downloadFreshImage(type: DownloadPharoImageTask)
+
+task loadGitFileTree(type: LoadMetacelloConfigTask, dependsOn: downloadFreshImage) {
+//    repository = "http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo${pharo.imageVersion}/main"
+    repository = 'http://smalltalkhub.com/mc/ThierryGoubier/GitFileTreePharo5Dev/main'
+    configuration = 'ConfigurationOfGitFileTree'
+    version = 'development'
+}
+
+task loadPageCareLanding(type: LoadMetacelloConfigTask, dependsOn: loadGitFileTree) {
+    repository = "gitfiletree://${project.projectDir}"
+    configuration = 'ConfigurationOfPageCareLanding'
+    version = 'development'
+    group = 'Core'
+}
+    
+task assemble(type: SavePharoImageTask, dependsOn: loadPageCareLanding) {
+    toImageName = imageName
+    shouldDeleteOldImage = true
+}
+
+task loadPageCareLandingTests(type: LoadMetacelloConfigTask, dependsOn: assemble) {
+    image = imageName
+    repository = "gitfiletree://${project.projectDir}"
+    configuration = 'ConfigurationOfPageCareLanding'
+    version = 'bleedingEdge'
+    group = 'Core'
+}
+
+task test(type: RunPharoTestsTask, dependsOn: loadPageCareLandingTests) {
+    image = imageName
+    packageName = "PageCareLanding-**-Tests"
+    shouldOutputAsJUnit = true
+}
+
+task clean(type: Delete) {
+    def foldersToDelete = []
+    new File('.').eachDir {
+        if (it.name.startsWith('image.')) {
+            foldersToDelete << it.name
+        }
+    }
+    delete foldersToDelete +
+            ["${imageName}.image", "${imageName}.changes", 'package-cache', 'play-cache',
+                    'PharoDebug.log']
+}
+
+task run(type:Exec) {
+    args = ["pagecare-landing-${version}.image", "eval", "--no-quit", "SettingBrowser open. PageCareLandingApplication new port: 8888; start"]
+    executable = 'pharo'
+}
+
+class PharoPlugin implements Plugin<Project> {
+    void apply(Project project) {
+        project.extensions.create("pharo", PharoPluginExtension)
+    }    
+}
+
+class PharoPluginExtension {
+    String zeroConfUrl = "http://get.pharo.org"
+    String imageVersion = 'stable'
+}
+
+class DownloadPharoImageTask extends DefaultTask {
+    @TaskAction
+    def downloadFreshImage() {
+        def cmd = (System.getProperty('os.name').startsWith('Mac') ? 'curl' : 'wget -O-')
+        project.exec {
+            commandLine "bash", "-c", "${cmd} ${project.pharo.zeroConfUrl}/${project.pharo.imageVersion} | bash"
+        }
+    }
+}
+
+class SavePharoImageTask extends DefaultTask {
+    String fromImageName = "Pharo.image"
+    String toImageName
+    boolean shouldDeleteOldImage
+        
+    @TaskAction
+    def renamePharoImage() {
+        def pharoArgs = [fromImageName, "save", toImageName]
+        if (shouldDeleteOldImage) {
+            pharoArgs << "--delete-old"
+        }
+        project.exec {
+            executable "pharo"
+            args pharoArgs
+        }
+    }
+}
+
+class LoadMetacelloConfigTask extends DefaultTask {
+    String image = "Pharo.image"
+    String repository
+    String configuration
+    String version
+        
+    @TaskAction
+    def loadMetacelloConfig() {
+        def pharoArgs = [image, "config", repository, configuration, "--install=${version}"]
+        project.exec {
+            executable "pharo"
+            args pharoArgs
+        }
+    }
+}
+
+class RunPharoTestsTask extends DefaultTask {
+    String image = "Pharo.image"
+    String packageName
+    boolean shouldOutputAsJUnit
+        
+    @TaskAction
+    def runTests() {
+        def pharoArgs = [image, "test", packageName]
+        if (shouldOutputAsJUnit) {
+            pharoArgs << "--junit-xml-output"
+        }
+        project.exec {
+            executable "pharo"
+            args pharoArgs
+        }
+    }
+}
