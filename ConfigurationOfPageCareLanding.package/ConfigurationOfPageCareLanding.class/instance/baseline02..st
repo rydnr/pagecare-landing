@@ -8,13 +8,11 @@ baseline02: spec
 							project: 'TMM' with: [ 
 									spec
 											className: #ConfigurationOfTMM;
-											versionString: #'stable';
-											repository: 'github://yannij/TMM:master/repository';
-											loads: #('stable')
+											repository: 'github://yannij/TMM:master/repository'
 									 ].
                 spec baseline: 'DeployUtils' with: [ spec repository: 'github://fstephany/DeployUtils/repository' ].
                 spec
-                        package: #'PageCare-Landing' with: #('TMM').
+                        package: #'PageCare-Landing' with: [ spec requires: #('TMM') ].
                 spec
-                        group: 'core' with: #(#'PageCare-Landing' );
-                        group: 'default' with: #('core' ). ].
+                        group: 'core' with: #(#'PageCare-Landing');
+                        group: 'default' with: #('core'). ].

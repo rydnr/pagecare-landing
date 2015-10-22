@@ -1,5 +1,5 @@
 baselines
 development: spec
-        <symbolicVersion: #'development'>
+        <symbolicVersion: 'development'>
 
-        spec for: #'common' version: '0.2-baseline'.
+        spec for: #'common' version: '0.2'.

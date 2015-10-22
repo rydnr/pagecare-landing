@@ -1,8 +1,7 @@
-as yet unclassified
+versions
 version01: spec
-        <version: '0.1'>
+        <version: '0.1' imports: #('0.1-baseline')>
         spec for: #'common' do: [
-                spec blessing: #'baseline'.
                 spec repository: 'gitfiletree://' , FileSystem workingDirectory fullName.
                 spec
 							project: 'TMM' with: [ 
