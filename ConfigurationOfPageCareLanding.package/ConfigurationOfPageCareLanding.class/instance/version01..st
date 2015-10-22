@@ -40,7 +40,7 @@ version01: spec
                                         repository: 'http://smalltalkhub.com/mc/estebanlm/Voyage/main/' ].
                 spec baseline: 'DeployUtils' with: [ spec repository: 'github://fstephany/DeployUtils/repository' ].
                 spec
-                        package: #'PageCare-Landing' requires: #('Teapot' 'Zinc' 'VoyageMongo').
+                        package: #'PageCare-Landing' with: [ spec requires: #('Teapot' 'Zinc' 'VoyageMongo') ].
                 spec
                         group: 'core' with: #(#'PageCare-Landing' );
                         group: 'default' with: #('core' ). ].
