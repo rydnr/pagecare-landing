@@ -8,7 +8,7 @@ baseline02: spec
 							project: 'TMM' with: [ 
 									spec
 											className: #ConfigurationOfTMM;
-											repository: 'github://yannij/TMM:master/repository'
+											repository: 'github://rydnr/TMM:master/repository'
 									 ].
                 spec baseline: 'DeployUtils' with: [ spec repository: 'github://fstephany/DeployUtils/repository' ].
                 spec
