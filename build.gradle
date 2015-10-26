@@ -40,13 +40,19 @@ def imageName = "${project.name}-${project.version}"
 task downloadFreshImage(type: DownloadPharoImageTask)
 
 task loadGitFileTree(type: LoadMetacelloConfigTask, dependsOn: downloadFreshImage) {
-//    repository = "http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo${pharo.imageVersion}/main"
-    repository = 'http://smalltalkhub.com/mc/ThierryGoubier/GitFileTreePharo5Dev/main'
+    repository = "http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo${pharo.imageVersion}/main"
+//    repository = 'http://smalltalkhub.com/mc/ThierryGoubier/GitFileTreePharo5Dev/main'
     configuration = 'ConfigurationOfGitFileTree'
     version = 'development'
 }
 
-task loadPageCareLanding(type: LoadMetacelloConfigTask, dependsOn: loadGitFileTree) {
+task loadTMM(type: LoadMetacelloConfigTask, dependsOn: loadGitFileTree) {
+    repository = "github://rydnr/TMM:master/repository"
+    configuration = 'ConfigurationOfTMM'
+    version = 'development'
+}
+
+task loadPageCareLanding(type: LoadMetacelloConfigTask, dependsOn: loadTMM) {
     repository = "gitfiletree://${project.projectDir}"
     configuration = 'ConfigurationOfPageCareLanding'
     version = 'development'
@@ -55,7 +61,7 @@ task loadPageCareLanding(type: LoadMetacelloConfigTask, dependsOn: loadGitFileTr
     
 task assemble(type: SavePharoImageTask, dependsOn: loadPageCareLanding) {
     toImageName = imageName
-    shouldDeleteOldImage = true
+    shouldDeleteOldImage = false
 }
 
 task loadPageCareLandingTests(type: LoadMetacelloConfigTask, dependsOn: assemble) {
