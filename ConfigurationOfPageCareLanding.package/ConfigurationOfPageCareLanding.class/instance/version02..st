@@ -6,7 +6,5 @@ version02: spec
 							project: 'TMM' with: [ 
 									spec
 											className: #ConfigurationOfTMM;
-											versionString: #'stable';
-											loads: #('stable')
-									 ]
+											versionString: #'stable'									 ]
 								].
