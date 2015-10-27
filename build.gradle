@@ -46,13 +46,14 @@ task loadGitFileTree(type: LoadMetacelloConfigTask, dependsOn: downloadFreshImag
     version = 'development'
 }
 
-task loadTMM(type: LoadMetacelloConfigTask, dependsOn: loadGitFileTree) {
-    repository = "github://rydnr/TMM:master/repository"
-    configuration = 'ConfigurationOfTMM'
-    version = 'development'
-}
+//task loadTMM(type: LoadMetacelloConfigTask, dependsOn: loadGitFileTree) {
+//    repository = "github://rydnr/TMM:master/repository"
+//    configuration = 'ConfigurationOfTMM'
+//    version = 'development'
+//}
 
-task loadPageCareLanding(type: LoadMetacelloConfigTask, dependsOn: loadTMM) {
+//task loadPageCareLanding(type: LoadMetacelloConfigTask, dependsOn: loadTMM) {
+task loadPageCareLanding(type: LoadMetacelloConfigTask, dependsOn: loadGitFileTree) {
     repository = "gitfiletree://${project.projectDir}"
     configuration = 'ConfigurationOfPageCareLanding'
     version = 'development'
